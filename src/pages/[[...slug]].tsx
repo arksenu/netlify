@@ -17,6 +17,20 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
         <MuiBox sx={{ px: 3 }} data-sb-object-id={page.__id}>
             <MuiContainer maxWidth="lg" disableGutters={true}>
                 <Head>
+                    <script>
+                      // Initialize the agent on page load.
+                      const fpPromise = import('https://fpjscdn.net/v3/Xh3utQ6UV9kTFft3Qfvq')
+                        .then(FingerprintJS => FingerprintJS.load())
+                    
+                      // Get the visitorId when you need it.
+                      fpPromise
+                        .then(fp => fp.get())
+                        .then(result => {
+                          const visitorId = result.visitorId
+                          console.log(visitorId)
+                        })
+                    
+                    </script>
                     <title>{page.title}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     {siteConfig.favicon && <link rel="icon" href={siteConfig.favicon} />}
