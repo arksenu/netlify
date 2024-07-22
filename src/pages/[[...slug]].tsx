@@ -18,11 +18,10 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
             <MuiContainer maxWidth="lg" disableGutters={true}>
                 <Head>
                     <script>
-                      // Initialize the agent on page load.
+
                       const fpPromise = import('https://fpjscdn.net/v3/Xh3utQ6UV9kTFft3Qfvq')
                         .then(FingerprintJS => FingerprintJS.load())
                     
-                      // Get the visitorId when you need it.
                       fpPromise
                         .then(fp => fp.get())
                         .then(result => {
